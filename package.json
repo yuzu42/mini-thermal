@@ -1,0 +1,61 @@
+{
+  "name": "mini-thermal",
+  "version": "0.1.0",
+  "description": "Driver library for Adafruit-style mini thermal printers: ESC/POS + DC2 bitmap protocol, time-paced serial writes (tiny RX buffer, no flow control), dithering image pipeline, and receipt helpers. Runtime-agnostic core with Node adapters.",
+  "type": "module",
+  "license": "MIT",
+  "author": "Tilman",
+  "engines": {
+    "node": ">=18"
+  },
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.cjs"
+    },
+    "./node": {
+      "types": "./dist/node.d.ts",
+      "import": "./dist/node.mjs",
+      "require": "./dist/node.cjs"
+    },
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "dist"
+  ],
+  "sideEffects": false,
+  "scripts": {
+    "build": "tsup",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "typecheck": "tsc --noEmit",
+    "demo": "tsx examples/demo-receipt.ts",
+    "prepublishOnly": "npm run build && npm test"
+  },
+  "dependencies": {
+    "jimp": "^1.6.1",
+    "serialport": "^13.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.0",
+    "tsx": "^4.19.2",
+    "tsup": "^8.3.5",
+    "typescript": "^5.7.2",
+    "vitest": "^2.1.8"
+  },
+  "keywords": [
+    "thermal-printer",
+    "esc-pos",
+    "escpos",
+    "receipt",
+    "printer",
+    "adafruit",
+    "serial",
+    "dithering",
+    "floyd-steinberg"
+  ]
+}
